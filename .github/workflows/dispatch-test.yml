@@ -1,7 +1,11 @@
 name: Dispatch test
 
 on:
-  workflow_dispatch:
+  push:
+    branches: [ 'arena/21a685fa-znpcplus' ]
+
+permissions:
+  contents: write
 
 jobs:
   test:
@@ -9,5 +13,13 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Echo
-        run: echo "dispatch works on branch ${{ github.ref_name }}"
+        with:
+          ref: arena/21a685fa-znpcplus
+      - name: Write marker
+        run: |
+          git config user.name "znpcplus-ci"
+          git config user.email "znpcplus-ci@users.noreply.github.com"
+          echo "ran-at=$(date -u +%FT%TZ) commit=$GITHUB_SHA" >> ci-test-marker.txt
+          git add ci-test-marker.txt
+          git commit -m "ci: marker"
+          git push origin HEAD:arena/21a685fa-znpcplus
