@@ -146,7 +146,7 @@ public class HologramImpl extends Viewable implements Hologram {
     @Override
     protected CompletableFuture<Void> UNSAFE_show(Player player) {
         int cap = maxLinesFor(player);
-        List<CompletableFuture<Void>> futures = new ArrayList<>();
+        List<CompletableFuture<?>> futures = new ArrayList<>();
         for (int i = 0; i < lines.size() && i < cap; i++) futures.add(lines.get(i).show(player));
         return FutureUtil.allOf(futures);
     }
