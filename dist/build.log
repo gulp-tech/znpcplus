@@ -1,0 +1,104 @@
+Downloading https://services.gradle.org/distributions/gradle-9.6.1-bin.zip
+.............10%.............20%..............30%.............40%..............50%.............60%.............70%..............80%.............90%..............100%
+
+Welcome to Gradle 9.6.1!
+
+Here are the highlights of this release:
+ - Improved Configuration Cache hit rates
+ - Additional CLI rendering options
+ - Important project hierarchy lookup deprecations
+
+For more details see https://docs.gradle.org/9.6.1/release-notes.html
+
+Starting a Gradle Daemon (subsequent builds will be faster)
+Type-safe project accessors is an incubating feature.
+> Task :buildSrc:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :buildSrc:generateExternalPluginSpecBuilders
+> Task :buildSrc:extractPrecompiledScriptPluginPlugins
+> Task :buildSrc:generateScriptPluginAdapters
+> Task :buildSrc:pluginDescriptors
+> Task :buildSrc:processResources
+> Task :buildSrc:compilePluginsBlocks
+> Task :buildSrc:generatePrecompiledScriptPluginAccessors
+> Task :buildSrc:compileKotlin
+> Task :buildSrc:compileJava NO-SOURCE
+> Task :buildSrc:compileGroovy NO-SOURCE
+> Task :buildSrc:classes
+> Task :buildSrc:jar
+> Task :api:clean UP-TO-DATE
+> Task :plugin:clean UP-TO-DATE
+> Task :plugin-1_16:clean UP-TO-DATE
+> Task :plugin-1_18:clean UP-TO-DATE
+> Task :api:processResources NO-SOURCE
+> Task :api:generateTestEffectiveLombokConfig
+> Task :api:processTestResources NO-SOURCE
+> Task :plugin:processResources
+> Task :plugin:generateTestEffectiveLombokConfig
+> Task :plugin:processTestResources NO-SOURCE
+> Task :api:generateEffectiveLombokConfig
+> Task :plugin:generateEffectiveLombokConfig
+
+> Task :api:compileJava
+/home/runner/work/znpcplus/znpcplus/api/src/main/java/lol/pyr/znpcsplus/api/entity/EntityPropertyRegistry.java:64: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+    default <T> void registerDummy(String name, T defaultValue) {
+                     ^
+1 warning
+
+> Task :api:classes
+> Task :api:jar
+> Task :api:assemble
+> Task :api:compileTestJava NO-SOURCE
+> Task :api:testClasses UP-TO-DATE
+> Task :api:test NO-SOURCE
+> Task :api:check UP-TO-DATE
+> Task :api:build
+
+> Task :plugin:compileJava
+Note: Some input files use or override a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+
+> Task :plugin:classes
+> Task :plugin:jar
+> Task :plugin:assemble
+> Task :plugin:compileTestJava NO-SOURCE
+> Task :plugin:testClasses UP-TO-DATE
+> Task :plugin:test NO-SOURCE
+> Task :plugin:check UP-TO-DATE
+> Task :plugin:build
+> Task :plugin-1_16:generateBukkitPluginDescription
+> Task :plugin-1_16:processResources
+> Task :plugin-1_16:generateTestEffectiveLombokConfig
+> Task :plugin-1_16:processTestResources NO-SOURCE
+> Task :plugin-1_18:generateBukkitPluginDescription
+> Task :plugin-1_18:processResources
+> Task :plugin-1_18:generateTestEffectiveLombokConfig
+> Task :plugin-1_18:processTestResources NO-SOURCE
+> Task :plugin-1_16:generateEffectiveLombokConfig
+> Task :plugin-1_16:compileJava
+> Task :plugin-1_16:classes
+> Task :plugin-1_16:jar SKIPPED
+> Task :plugin-1_16:shadowJar
+> Task :plugin-1_16:assemble
+> Task :plugin-1_16:compileTestJava NO-SOURCE
+> Task :plugin-1_16:testClasses UP-TO-DATE
+> Task :plugin-1_16:test NO-SOURCE
+> Task :plugin-1_16:check UP-TO-DATE
+> Task :plugin-1_16:build
+> Task :plugin-1_18:generateEffectiveLombokConfig
+> Task :plugin-1_18:compileJava
+> Task :plugin-1_18:classes
+> Task :plugin-1_18:jar SKIPPED
+> Task :plugin-1_18:shadowJar
+> Task :plugin-1_18:assemble
+> Task :plugin-1_18:compileTestJava NO-SOURCE
+> Task :plugin-1_18:testClasses UP-TO-DATE
+> Task :plugin-1_18:test NO-SOURCE
+> Task :plugin-1_18:check UP-TO-DATE
+> Task :plugin-1_18:build
+gradle/actions: Writing build results to /home/runner/work/_temp/.gradle-actions/build-results/build-1793092764825.json
+
+[Incubating] Problems report is available at: file:///home/runner/work/znpcplus/znpcplus/build/reports/problems/problems-report.html
+
+BUILD SUCCESSFUL in 1m 59s
+34 actionable tasks: 30 executed, 4 up-to-date
+Consider enabling configuration cache to speed up this build: https://docs.gradle.org/9.6.1/userguide/configuration_cache_enabling.html
