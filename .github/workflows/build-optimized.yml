@@ -1,0 +1,106 @@
+name: Build optimized jars
+
+on:
+  push:
+    branches: [ 'arena/21a685fa-znpcplus' ]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      GIT_BRANCH: ${{ github.ref_name }}
+      GIT_COMMIT: ${{ github.sha }}
+      BUILD_ID: ${{ github.run_number }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: arena/21a685fa-znpcplus
+          fetch-depth: 0
+
+      - name: Install JDKs
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: |
+            17
+            21
+
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v4
+
+      - name: Build with Gradle Wrapper
+        id: build
+        shell: bash
+        run: |
+          chmod +x ./gradlew
+          ./gradlew clean build --refresh-dependencies --stacktrace 2>&1 | tee build.log
+
+      - name: Package deliverables
+        if: always()
+        shell: bash
+        run: |
+          mkdir -p dist
+          cp plugin-1_16/build/libs/ZNPCsPlus-Modern-1_16.jar dist/ZNPCsPlus-Modern-Geyser-Optimized-1_16.jar 2>/dev/null || true
+          cp plugin-1_18/build/libs/ZNPCsPlus-Modern-1_18.jar dist/ZNPCsPlus-Modern-Geyser-Optimized-1_18.jar 2>/dev/null || true
+          cp build.log dist/build.log 2>/dev/null || true
+          printf 'build_outcome=%s\ncommit=%s\nrun=%s\n' '${{ steps.build.outcome }}' '${{ github.sha }}' '${{ github.run_number }}' > dist/BUILD_STATUS.txt
+          cat > dist/config-snippet.yaml <<'EOF'
+          # Add the geyser-* keys to plugins/ZNPCsPlus/config.yaml (defaults shown)
+          geyser-optimizations-enabled: true
+          geyser-view-distance: 24
+          view-distance-margin: 4
+          geyser-packets-per-tick: 8
+          geyser-max-queued-packets: 256
+          geyser-max-hologram-lines: 3
+          geyser-drop-rotation-packets: true
+          geyser-drop-equipment-packets: true
+          geyser-drop-attribute-packets: true
+          geyser-drop-tab-list-packets: true
+          geyser-drop-team-packets: false
+          geyser-name-prefixes: '.,*'
+          geyser-uuid-msb-zero: true
+          EOF
+          cat > dist/README.txt <<'EOF'
+          ZNPCsPlus-Modern - Geyser/Bedrock optimized build
+          =================================================
+
+          Put ONE of these jars into your server's plugins/ folder (replace the old
+          ZNPCsPlus jar; the plugin name is still ZNPCsPlus):
+
+            ZNPCsPlus-Modern-Geyser-Optimized-1_16.jar  -> Paper/Spigot 1.16.x - 1.17.x
+            ZNPCsPlus-Modern-Geyser-Optimized-1_18.jar  -> Paper/Spigot 1.18+ (incl. Folia)
+
+          Requirements: Java 17+, PacketEvents 2.x installed as a separate plugin.
+          Geyser-Spigot / Floodgate are optional (used for reliable Bedrock detection).
+
+          What changed (see config-snippet.yaml for tunables):
+            * outgoing NPC packets for Bedrock players are budgeted (max per tick)
+              and coalesced, so a crowd of NPCs no longer arrives in one packet burst;
+            * tab-list / player-info packets and async skin lookups are skipped for
+              Bedrock players; rotation, equipment and attribute spam is dropped;
+            * hologram lines are capped for Bedrock players;
+            * NpcProcessorTask now uses one player snapshot per cycle, cached NPC
+              locations, per-player view distance and a hysteresis margin;
+            * Java players keep the original behaviour.
+
+          Tuning: lower geyser-packets-per-tick / geyser-view-distance /
+          geyser-max-hologram-lines if FPS still drops. Set
+          geyser-optimizations-enabled: false to disable all of the above.
+          EOF
+          echo "--- dist ---"
+          ls -la dist
+
+      - name: Publish jars back to the branch
+        if: always()
+        shell: bash
+        run: |
+          git config user.name "znpcplus-ci"
+          git config user.email "znpcplus-ci@users.noreply.github.com"
+          git add -f dist/
+          git commit -m "build: optimized jars (${{ steps.build.outcome }})" || echo "nothing to commit"
+          git push origin HEAD:arena/21a685fa-znpcplus
