@@ -1,0 +1,165 @@
+Downloading https://services.gradle.org/distributions/gradle-9.6.1-bin.zip
+.............10%.............20%..............30%.............40%..............50%.............60%.............70%..............80%.............90%..............100%
+
+Welcome to Gradle 9.6.1!
+
+Here are the highlights of this release:
+ - Improved Configuration Cache hit rates
+ - Additional CLI rendering options
+ - Important project hierarchy lookup deprecations
+
+For more details see https://docs.gradle.org/9.6.1/release-notes.html
+
+Starting a Gradle Daemon (subsequent builds will be faster)
+Type-safe project accessors is an incubating feature.
+> Task :buildSrc:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :buildSrc:generateExternalPluginSpecBuilders
+> Task :buildSrc:extractPrecompiledScriptPluginPlugins
+> Task :buildSrc:generateScriptPluginAdapters
+> Task :buildSrc:pluginDescriptors
+> Task :buildSrc:processResources
+> Task :buildSrc:compilePluginsBlocks
+> Task :buildSrc:generatePrecompiledScriptPluginAccessors
+> Task :buildSrc:compileKotlin
+> Task :buildSrc:compileJava NO-SOURCE
+> Task :buildSrc:compileGroovy NO-SOURCE
+> Task :buildSrc:classes
+> Task :buildSrc:jar
+> Task :api:clean UP-TO-DATE
+> Task :plugin:clean UP-TO-DATE
+> Task :plugin-1_16:clean UP-TO-DATE
+> Task :plugin-1_18:clean UP-TO-DATE
+> Task :api:processResources NO-SOURCE
+> Task :api:generateTestEffectiveLombokConfig
+> Task :api:processTestResources NO-SOURCE
+> Task :plugin:processResources
+> Task :plugin:generateTestEffectiveLombokConfig
+> Task :plugin:processTestResources NO-SOURCE
+> Task :plugin-1_16:generateBukkitPluginDescription
+> Task :plugin-1_16:processResources
+> Task :plugin-1_16:generateTestEffectiveLombokConfig
+> Task :plugin-1_16:processTestResources NO-SOURCE
+> Task :api:generateEffectiveLombokConfig
+
+> Task :api:compileJava
+/home/runner/work/znpcplus/znpcplus/api/src/main/java/lol/pyr/znpcsplus/api/entity/EntityPropertyRegistry.java:64: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+    default <T> void registerDummy(String name, T defaultValue) {
+                     ^
+1 warning
+
+> Task :api:classes
+> Task :api:jar
+> Task :api:assemble
+> Task :api:compileTestJava NO-SOURCE
+> Task :api:testClasses UP-TO-DATE
+> Task :api:test NO-SOURCE
+> Task :api:check UP-TO-DATE
+> Task :api:build
+> Task :plugin-1_18:generateBukkitPluginDescription
+> Task :plugin-1_18:processResources
+> Task :plugin-1_18:generateTestEffectiveLombokConfig
+> Task :plugin-1_18:generateEffectiveLombokConfig
+> Task :plugin-1_18:processTestResources NO-SOURCE
+> Task :plugin-1_16:generateEffectiveLombokConfig
+> Task :plugin:generateEffectiveLombokConfig
+
+> Task :plugin:compileJava
+/home/runner/work/znpcplus/znpcplus/plugin/src/main/java/lol/pyr/znpcsplus/hologram/HologramImpl.java:151: error: incompatible types: List<CompletableFuture<Void>> cannot be converted to Collection<CompletableFuture<?>>
+        return FutureUtil.allOf(futures);
+                                ^
+Note: Some input files use or override a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+Note: Some messages have been simplified; recompile with -Xdiags:verbose to get full output
+1 error
+
+> Task :plugin:compileJava FAILED
+gradle/actions: Writing build results to /home/runner/work/_temp/.gradle-actions/build-results/build-1793092533761.json
+
+[Incubating] Problems report is available at: file:///home/runner/work/znpcplus/znpcplus/build/reports/problems/problems-report.html
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task ':plugin:compileJava' (registered by plugin class 'org.gradle.api.plugins.JavaBasePlugin').
+> Compilation failed; see the compiler output below.
+  /home/runner/work/znpcplus/znpcplus/plugin/src/main/java/lol/pyr/znpcsplus/hologram/HologramImpl.java:151: error: incompatible types: List<CompletableFuture<Void>> cannot be converted to Collection<CompletableFuture<?>>
+          return FutureUtil.allOf(futures);
+                                  ^
+  1 error
+
+* Try:
+> Check your code and dependencies to fix the compilation error(s)
+> Run with --scan to get full insights from a Build Scan (powered by Develocity).
+
+* Exception is:
+org.gradle.api.tasks.TaskExecutionException: Execution failed for task ':plugin:compileJava' (registered by plugin class 'org.gradle.api.plugins.JavaBasePlugin').
+	at org.gradle.api.internal.tasks.execution.ExecuteActionsTaskExecuter.lambda$executeIfValid$1(ExecuteActionsTaskExecuter.java:135)
+	at org.gradle.internal.Try$Failure.ifSuccessfulOrElse(Try.java:288)
+	at org.gradle.api.internal.tasks.execution.ExecuteActionsTaskExecuter.executeIfValid(ExecuteActionsTaskExecuter.java:133)
+	at org.gradle.api.internal.tasks.execution.ExecuteActionsTaskExecuter.execute(ExecuteActionsTaskExecuter.java:121)
+	at org.gradle.api.internal.tasks.execution.ProblemsTaskPathTrackingTaskExecuter.execute(ProblemsTaskPathTrackingTaskExecuter.java:41)
+	at org.gradle.api.internal.tasks.execution.ResolveTaskExecutionModeExecuter.execute(ResolveTaskExecutionModeExecuter.java:51)
+	at org.gradle.api.internal.tasks.execution.FinalizePropertiesTaskExecuter.execute(FinalizePropertiesTaskExecuter.java:46)
+	at org.gradle.api.internal.tasks.execution.SkipTaskWithNoActionsExecuter.execute(SkipTaskWithNoActionsExecuter.java:57)
+	at org.gradle.api.internal.tasks.execution.SkipOnlyIfTaskExecuter.execute(SkipOnlyIfTaskExecuter.java:74)
+	at org.gradle.api.internal.tasks.execution.CatchExceptionTaskExecuter.execute(CatchExceptionTaskExecuter.java:36)
+	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter$1.executeTask(EventFiringTaskExecuter.java:77)
+	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter$1.call(EventFiringTaskExecuter.java:55)
+	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter$1.call(EventFiringTaskExecuter.java:52)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:210)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:205)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:67)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:60)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:167)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:60)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.call(DefaultBuildOperationRunner.java:54)
+	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter.execute(EventFiringTaskExecuter.java:52)
+	at org.gradle.execution.plan.DefaultNodeExecutor.executeLocalTaskNode(DefaultNodeExecutor.java:55)
+	at org.gradle.execution.plan.DefaultNodeExecutor.execute(DefaultNodeExecutor.java:34)
+	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$InvokeNodeExecutorsAction.execute(DefaultTaskExecutionGraph.java:355)
+	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$InvokeNodeExecutorsAction.execute(DefaultTaskExecutionGraph.java:343)
+	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$BuildOperationAwareExecutionAction.lambda$execute$0(DefaultTaskExecutionGraph.java:339)
+	at org.gradle.internal.operations.CurrentBuildOperationRef.with(CurrentBuildOperationRef.java:84)
+	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$BuildOperationAwareExecutionAction.execute(DefaultTaskExecutionGraph.java:339)
+	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$BuildOperationAwareExecutionAction.execute(DefaultTaskExecutionGraph.java:328)
+	at org.gradle.execution.plan.DefaultPlanExecutor$ExecutorWorker.execute(DefaultPlanExecutor.java:459)
+	at org.gradle.execution.plan.DefaultPlanExecutor$ExecutorWorker.run(DefaultPlanExecutor.java:376)
+	at org.gradle.internal.concurrent.ExecutorPolicy$CatchAndRecordFailures.onExecute(ExecutorPolicy.java:64)
+	at org.gradle.internal.concurrent.AbstractManagedExecutor$1.run(AbstractManagedExecutor.java:47)
+Caused by: org.gradle.api.internal.tasks.compile.CompilationFailedException: Compilation failed; see the compiler output below.
+/home/runner/work/znpcplus/znpcplus/plugin/src/main/java/lol/pyr/znpcsplus/hologram/HologramImpl.java:151: error: incompatible types: List<CompletableFuture<Void>> cannot be converted to Collection<CompletableFuture<?>>
+        return FutureUtil.allOf(futures);
+                                ^
+Note: Some input files use or override a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+Note: Some messages have been simplified; recompile with -Xdiags:verbose to get full output
+1 error
+	at org.gradle.api.internal.tasks.compile.JdkJavaCompiler.execute(JdkJavaCompiler.java:88)
+	at org.gradle.api.internal.tasks.compile.JdkJavaCompiler.execute(JdkJavaCompiler.java:49)
+	at org.gradle.api.internal.tasks.compile.daemon.CompilerWorkAction.execute(CompilerWorkAction.java:52)
+	at org.gradle.workers.internal.DefaultWorkerServer.execute(DefaultWorkerServer.java:68)
+	at org.gradle.workers.internal.AbstractClassLoaderWorker$1.create(AbstractClassLoaderWorker.java:54)
+	at org.gradle.workers.internal.AbstractClassLoaderWorker$1.create(AbstractClassLoaderWorker.java:48)
+	at org.gradle.internal.classloader.ClassLoaderUtils.executeInClassloader(ClassLoaderUtils.java:102)
+	at org.gradle.workers.internal.AbstractClassLoaderWorker.executeInClassLoader(AbstractClassLoaderWorker.java:48)
+	at org.gradle.workers.internal.FlatClassLoaderWorker.run(FlatClassLoaderWorker.java:32)
+	at org.gradle.workers.internal.FlatClassLoaderWorker.run(FlatClassLoaderWorker.java:22)
+	at org.gradle.workers.internal.WorkerDaemonServer.run(WorkerDaemonServer.java:108)
+	at org.gradle.workers.internal.WorkerDaemonServer.run(WorkerDaemonServer.java:77)
+	at org.gradle.process.internal.worker.request.WorkerAction.lambda$run$1(WorkerAction.java:150)
+	at org.gradle.process.internal.worker.child.WorkerLogEventListener.withWorkerLoggingProtocol(WorkerLogEventListener.java:41)
+	at org.gradle.process.internal.worker.request.WorkerAction.lambda$run$2(WorkerAction.java:150)
+	at org.gradle.internal.operations.CurrentBuildOperationRef.with(CurrentBuildOperationRef.java:84)
+	at org.gradle.process.internal.worker.request.WorkerAction.run(WorkerAction.java:142)
+	at org.gradle.internal.dispatch.MethodInvocation.invokeOn(MethodInvocation.java:77)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:28)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:19)
+	at org.gradle.internal.remote.internal.hub.MessageHubBackedObjectConnection$DispatchWrapper.dispatch(MessageHubBackedObjectConnection.java:182)
+	at org.gradle.internal.remote.internal.hub.MessageHubBackedObjectConnection$DispatchWrapper.dispatch(MessageHubBackedObjectConnection.java:164)
+	at org.gradle.internal.remote.internal.hub.MessageHub$Handler.run(MessageHub.java:414)
+	at org.gradle.internal.concurrent.ExecutorPolicy$CatchAndRecordFailures.onExecute(ExecutorPolicy.java:64)
+	at org.gradle.internal.concurrent.AbstractManagedExecutor$1.run(AbstractManagedExecutor.java:47)
+
+
+BUILD FAILED in 1m 47s
+29 actionable tasks: 25 executed, 4 up-to-date

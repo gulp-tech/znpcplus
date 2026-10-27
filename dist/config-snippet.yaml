@@ -1,0 +1,14 @@
+# Add the geyser-* keys to plugins/ZNPCsPlus/config.yaml (defaults shown)
+geyser-optimizations-enabled: true
+geyser-view-distance: 24
+view-distance-margin: 4
+geyser-packets-per-tick: 8
+geyser-max-queued-packets: 256
+geyser-max-hologram-lines: 3
+geyser-drop-rotation-packets: true
+geyser-drop-equipment-packets: true
+geyser-drop-attribute-packets: true
+geyser-drop-tab-list-packets: true
+geyser-drop-team-packets: false
+geyser-name-prefixes: '.,*'
+geyser-uuid-msb-zero: true
